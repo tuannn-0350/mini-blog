@@ -13,10 +13,12 @@
   </head>
 
   <body>
-    <%= render "layouts/header" %>
-    <%= render "layouts/top_navbar" %>
+  <%= render "layouts/top_navbar" %>
+  <%= render "layouts/header" %>
+  <%= render "layouts/topic_navbar" %>
     <main class="container mx-auto mt-28 px-5 flex">
       <%= yield %>
     </main>
+  <%= render "layouts/footer" %>
   </body>
 </html>

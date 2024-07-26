@@ -15,6 +15,7 @@ ActiveRecord::Schema[7.0].define(version: 2024_07_25_023400) do
     t.string "title", null: false
     t.text "body", null: false
     t.boolean "status", default: true, null: false
+
     t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

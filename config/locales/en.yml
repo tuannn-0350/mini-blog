@@ -31,3 +31,6 @@
 
 en:
   hello: "Hello world"
+  posts: "Posts"
+  my_posts: "My Posts"
+  other_user: "Other users"
