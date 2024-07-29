@@ -1,5 +1,6 @@
 vi:
   hello: "Xin chào"
+  base_title: "Minimal Blog"
   posts: "Bài viết"
   my_posts: "Bài viết của tôi"
   other_users: "Người dùng khác"
@@ -7,3 +8,11 @@ vi:
   contact: "Liên hệ"
   privacy_policy: "Chính sách riêng tư"
   terms_&_conditions: "Điều khoản và điều kiện"
+  log_in: "Đăng nhập"
+  invalid_email_password_combination: "Sai tài khoản hoặc mật khẩu"
+  log_out: "Đăng xuất"
+  please_sign_up: "Bạn chưa có tài khoản?"
+  sign_up: "Đăng ký"
+  email: "Email"
+  password: "Mật khẩu"
+  invalid_email_or_password: "Email hoặc mật khẩu không hợp lệ"

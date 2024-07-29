@@ -1,4 +1,7 @@
 class User < ApplicationRecord
+  UPDATABLE_ATTRS = %i(name email password password_confirmation).freeze
+
+  before_save {email.downcase!}
   has_secure_password
   has_many :posts, dependent: :destroy
 
