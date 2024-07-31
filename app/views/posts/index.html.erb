@@ -1,0 +1,11 @@
+<% provide :title,  t("my_posts") %>
+<section class="w-full md:w-2/3 mx-auto flex flex-col items-center px-3">
+  <% if @posts.empty? %>
+    <p class="text-center text-gray-500 text-lg mt-8">
+      <%= t("no_posts") %>
+    </p>
+  <% else %>
+    <%= render @posts, show_all: false %>
+    <%= @posts.count < Settings.pagy.items ? "" :  pagy_nav(@pagy)  %>
+  <% end %>
+</section>

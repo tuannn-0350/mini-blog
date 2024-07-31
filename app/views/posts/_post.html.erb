@@ -1,0 +1,14 @@
+<%= link_to post_path(post) do %>
+  <article class="flex flex-col shadow my-4 w-full">
+    <div class="bg-white flex flex-col justify-start p-6">
+      <div class="text-3xl font-bold hover:text-gray-700 pb-4"> <%= post.title %> </div>
+      <div class="flex flex-row align-center w-full">
+        <div class="flex flex-row align-center w-8/12">
+          <p  class="text-sm pb-3"> <%= t :author %> </p>
+          <div class="font-semibold text-sm pl-3 pb-3 hover:text-gray-800"> <%= post.user_name %> </div>
+        </div>
+      </div>
+      <div class=<%= show_all ? "text-sm pb-3" : "line-clamp-3" %> > <%= post.body %> </div>
+    </div>
+  </article>
+<% end %>

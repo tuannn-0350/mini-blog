@@ -1,0 +1,14 @@
+.pagy {
+  @apply px-3 py-2 mx-2;
+  @apply text-gray-700 no-underline bg-white rounded-lg;
+}
+
+.pagy a {
+  @apply px-3 py-2 mx-2;
+  @apply text-gray-700 no-underline bg-white rounded-lg;
+}
+
+.pagy a.current {
+  @apply px-3 py-2 mx-2;
+  @apply text-black no-underline bg-blue-200 rounded-lg;
+}

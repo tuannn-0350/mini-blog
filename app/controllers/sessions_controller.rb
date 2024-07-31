@@ -1,4 +1,6 @@
 class SessionsController < ApplicationController
+  before_action :logged_in_user, only: %i(destroy)
+
   def new; end
 
   def create

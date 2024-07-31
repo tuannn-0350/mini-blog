@@ -1,7 +1,7 @@
 class User < ApplicationRecord
   UPDATABLE_ATTRS = %i(name email password password_confirmation).freeze
 
-  before_save {email.downcase!}
+  before_save :downcase_email
   has_secure_password
   has_many :posts, dependent: :destroy
 
@@ -14,4 +14,10 @@ foreign_key: :followed_id, dependent: :destroy
 
   has_many :reactions, dependent: :destroy
   has_many :reacted_posts, through: :reactions, source: :post
+
+  private
+
+  def downcase_email
+    email.downcase!
+  end
 end

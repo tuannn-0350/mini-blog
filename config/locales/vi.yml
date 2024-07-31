@@ -16,3 +16,6 @@ vi:
   email: "Email"
   password: "Mật khẩu"
   invalid_email_or_password: "Email hoặc mật khẩu không hợp lệ"
+  please_log_in: "Hãy đăng nhập trước khi thực hiện"
+  no_post: "Không có bài viết nào"
+  post: "Bài viết"
