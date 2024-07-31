@@ -84,14 +84,12 @@ GEM
       rack-test (>= 0.6.3)
       regexp_parser (>= 1.5, < 3.0)
       xpath (~> 3.2)
+    coderay (1.1.3)
     concurrent-ruby (1.2.2)
     config (5.5.1)
       deep_merge (~> 1.2, >= 1.2.1)
     crass (1.0.6)
     date (3.3.3)
-    debug (1.8.0)
-      irb (>= 1.5.0)
-      reline (>= 0.3.1)
     deep_merge (1.2.2)
     erubi (1.12.0)
     faker (3.2.0)
@@ -107,9 +105,6 @@ GEM
     importmap-rails (1.2.1)
       actionpack (>= 6.0.0)
       railties (>= 6.0.0)
-    io-console (0.6.0)
-    irb (1.7.4)
-      reline (>= 0.3.6)
     jbuilder (2.11.5)
       actionview (>= 5.0.0)
       activesupport (>= 5.0.0)
@@ -147,6 +142,11 @@ GEM
     parser (3.2.2.3)
       ast (~> 2.4.1)
       racc
+    pry (0.14.2)
+      coderay (~> 1.1)
+      method_source (~> 1.0)
+    pry-rails (0.3.11)
+      pry (>= 0.13.0)
     public_suffix (5.0.3)
     puma (5.6.6)
       nio4r (~> 2.0)
@@ -188,8 +188,6 @@ GEM
     rainbow (3.1.1)
     rake (13.0.6)
     regexp_parser (2.8.1)
-    reline (0.3.7)
-      io-console (~> 0.5)
     rexml (3.2.6)
     rubocop (1.56.0)
       base64 (~> 0.1.1)
@@ -271,7 +269,6 @@ DEPENDENCIES
   bootsnap
   capybara
   config
-  debug
   faker (~> 3.2)
   font-awesome-sass (~> 5.15)
   foreman (~> 0.87.2)
@@ -279,6 +276,7 @@ DEPENDENCIES
   jbuilder
   mysql2 (~> 0.5)
   pagy (~> 9.0)
+  pry-rails
   puma (~> 5.0)
   rails (~> 7.0.5)
   rails-i18n (~> 7.0)

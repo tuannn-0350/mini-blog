@@ -1,3 +1,5 @@
 <% provide :title,  t("home") %>
-
-<h1> <%= t "hello" %> </h1>
+<section class="w-full md:w-2/3 flex flex-col items-center px-3">
+  <%= render @posts, show_all: false %>
+  <%== pagy_nav @pagy %>
+</section>

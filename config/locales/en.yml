@@ -16,3 +16,6 @@ en:
   email: "Email"
   password: "Password"
   invalid_email_or_password: "Invalid email or password"
+  please_log_in: "Please log in first"
+  no_post: "No posts"
+  post: "Post"
