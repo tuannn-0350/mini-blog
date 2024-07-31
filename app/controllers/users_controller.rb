@@ -11,7 +11,7 @@ class UsersController < ApplicationController
   end
 
   def show
-    @pagy, @posts = pagy @user.posts.order_by_created_at,
+    @pagy, @posts = pagy @user.posts.published.order_by_created_at,
                          limit: Settings.pagy.items
   end
 

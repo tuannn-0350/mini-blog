@@ -1,6 +1,9 @@
 class ApplicationController < ActionController::Base
   include Pagy::Backend
   include SessionsHelper
+
+  rescue_from ::ActiveRecord::RecordNotFound, with: :record_not_found
+
   before_action :set_locale
   def set_locale
     I18n.locale = params[:locale] || I18n.default_locale
@@ -17,5 +20,10 @@ class ApplicationController < ActionController::Base
     store_location
     flash[:danger] = t "please_log_in"
     redirect_to login_url
+  end
+
+  def record_not_found
+    flash[:danger] = t "record_not_found"
+    redirect_to root_url
   end
 end

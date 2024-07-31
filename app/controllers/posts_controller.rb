@@ -52,7 +52,7 @@ class PostsController < ApplicationController
   end
 
   def feed
-    @pagy, @posts = pagy Post.feed(current_user.following_ids),
+    @pagy, @posts = pagy Post.published.feed(current_user.following_ids),
                          limit: Settings.pagy.items
   end
 

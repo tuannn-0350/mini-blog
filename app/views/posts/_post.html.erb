@@ -31,5 +31,9 @@
         <%= link_to t("edit"), edit_user_post_path(current_user, post), data: {turbo_method: :get}, class: "pl-10 text-primary hover:text-secondary" %>
       </div>
     <% end %>
+
+    <% if show_all %>
+      <%= render "reaction_form" %>
+    <% end %>
   </div>
 </article>

@@ -21,4 +21,5 @@ Rails.application.routes.draw do
   resources :posts
   resources :relationships, only: %i(create destroy)
   get "feed", to: "posts#feed"
+  resources :reactions, only: %i(create destroy)
 end
