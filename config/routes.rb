@@ -13,7 +13,12 @@ Rails.application.routes.draw do
 
   resources :users do
     resources :posts
+    member do
+      get :following, :followers
+    end
   end
 
   resources :posts
+  resources :relationships, only: %i(create destroy)
+  get "feed", to: "posts#feed"
 end

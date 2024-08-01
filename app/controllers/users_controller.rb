@@ -1,6 +1,18 @@
 class UsersController < ApplicationController
+  before_action :find_user, only: %i(show)
+
+  def index
+    @users = User.order_by_name
+    @pagy, @users = pagy @users, limit: Settings.pagy.items
+  end
+
   def new
     @user = User.new
+  end
+
+  def show
+    @pagy, @posts = pagy @user.posts.order_by_created_at,
+                         limit: Settings.pagy.items
   end
 
   def create
@@ -19,5 +31,13 @@ class UsersController < ApplicationController
 
   def user_params
     params.require(:user).permit User::UPDATABLE_ATTRS
+  end
+
+  def find_user
+    @user = User.find_by id: params[:id]
+    return if @user
+
+    flash[:danger] = t "user_not_found"
+    redirect_to root_url
   end
 end

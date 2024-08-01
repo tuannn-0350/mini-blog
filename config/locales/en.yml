@@ -34,3 +34,7 @@ en:
   post_update_failed: "Post update failed"
   post_not_found: "Post not found"
   post_delete_failed: "Delete post failed"
+  users: "Other users"
+  stats: "User's stats"
+  follower: "Follower"
+  following: "Following"

@@ -9,4 +9,5 @@ class Post < ApplicationRecord
 
   scope :published, ->{where status: true}
   scope :order_by_created_at, ->{order created_at: :desc}
+  scope :feed, ->(following_ids){where user_id: following_ids}
 end

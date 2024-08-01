@@ -1,0 +1,9 @@
+<% unless current_user? @user %>
+  <div class="mt-4 p-0.5 mb-2 me-2 border w-full rounded-lg group bg-gradient-to-br from-red-200 via-red-300 to-yellow-200 group-hover:from-red-200 group-hover:via-red-300 group-hover:to-yellow-200 ring-0.5 outline-none ring-red-100">
+    <span class="w-full transition-all ease-in duration-75 bg-white rounded-md group-hover:bg-opacity-0 flex flex-col items-center align-center">
+      <div id="follow_form" class="w-full">
+        <%= render current_user.following?(@user) ? "unfollow" :  "follow" %>
+      </div>
+    </span>
+  </div>
+<% end %>

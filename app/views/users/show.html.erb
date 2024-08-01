@@ -1,0 +1,10 @@
+<% provide :title, @user.name %>
+<div class="w-full md:w-2/3 flex flex-col items-center px-3">
+  <%= render @posts, show_all: false, render_tools: false %>
+</div>
+<aside class="w-full md:w-1/3 flex flex-col items-center px-3">
+  <div class="w-full bg-white shadow flex flex-col my-4 p-6">
+    <p class="text-xl font-semibold pb-5"><%= t "stats" %></p>
+    <%= render "shared/stats" %>
+  </div>
+</aside>
