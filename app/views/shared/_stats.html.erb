@@ -1,0 +1,19 @@
+<% @user ||= current_user %>
+<div class="flex flex-col items-center w-full">
+  <div class="flex items-center w-full">
+    <div class="w-1/2 px-1">
+      <strong id="following">
+        <%= @user.following.count %>
+      </strong>
+      <%= t "following" %>
+    </div>
+    <div class="w-1/2 px-1">
+      <strong id="followers" class="w-1/2">
+        <%= @user.followers.count %>
+      </strong>
+      <%= t "followers" %>
+    </div>
+  </div>
+
+  <%= render "follow_form" %>
+</div>

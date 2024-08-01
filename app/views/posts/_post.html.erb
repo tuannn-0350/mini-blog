@@ -1,12 +1,27 @@
 <article class="flex flex-col shadow my-4 w-full">
   <div class="bg-white flex flex-col justify-start p-6">
-    <%= link_to post, class: "text-3xl font-bold hover:text-gray-700 pb-4" do %>
-      <div class="text-3xl font-bold hover:text-gray-700 pb-4"> <%= post.title %> </div>
+    <%= link_to post do %>
+      <div class="text-3xl font-bold hover:text-gray-700"> <%= post.title %> </div>
     <% end %>
-    <div class="flex flex-row align-center w-full">
+    <div class="flex flex-row align-center w-full m-2 items-center">
       <div class="flex flex-row align-center w-8/12">
-        <p  class="text-sm pb-3"> <%= t :author %> </p>
-        <div class="font-semibold text-sm pl-3 pb-3 hover:text-gray-800"> <%= post.user_name %> </div>
+        <p  class="text-sm"> <%= t :author %> </p>
+        <%= link_to user_path(post.user), class: "font-semibold text-sm pl-3 hover:text-gray-800" do %>
+          <div class="font-semibold text-sm pl-3 hover:text-gray-800"> <%= post.user_name %> </div>
+        <% end %>
+      </div>
+      <div class="flex flex-row align-left w-4/12">
+        <% if post.status %>
+          <div class="bg-green-200 text-green-700 text-xs font-bold px-2 py-1 rounded-full uppercase">
+            <i class="fas fa-users pr-1"></i>
+            <%= t :published  %>
+          </div>
+        <% else %>
+          <div class="bg-red-200 text-red-700 text-xs font-bold px-2 py-1 rounded-full uppercase">
+            <i class="fas fa-lock pr-1"></i>
+            <%= t :private %>
+          </div>
+        <% end %>
       </div>
     </div>
     <div class=<%= show_all ? "text-sm pb-3" : "line-clamp-3" %> > <%= post.body %> </div>

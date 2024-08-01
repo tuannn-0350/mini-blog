@@ -30,7 +30,7 @@ class PostsController < ApplicationController
     redirect_to root_url
   end
 
-  def edit;  end
+  def edit; end
 
   def update
     if @post.update post_params
@@ -49,6 +49,11 @@ class PostsController < ApplicationController
     end
 
     redirect_to user_posts_path(current_user)
+  end
+
+  def feed
+    @pagy, @posts = pagy Post.feed(current_user.following_ids),
+                         limit: Settings.pagy.items
   end
 
   private
