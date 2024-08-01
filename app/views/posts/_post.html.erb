@@ -1,14 +1,20 @@
-<%= link_to post_path(post) do %>
-  <article class="flex flex-col shadow my-4 w-full">
-    <div class="bg-white flex flex-col justify-start p-6">
+<article class="flex flex-col shadow my-4 w-full">
+  <div class="bg-white flex flex-col justify-start p-6">
+    <%= link_to post, class: "text-3xl font-bold hover:text-gray-700 pb-4" do %>
       <div class="text-3xl font-bold hover:text-gray-700 pb-4"> <%= post.title %> </div>
-      <div class="flex flex-row align-center w-full">
-        <div class="flex flex-row align-center w-8/12">
-          <p  class="text-sm pb-3"> <%= t :author %> </p>
-          <div class="font-semibold text-sm pl-3 pb-3 hover:text-gray-800"> <%= post.user_name %> </div>
-        </div>
+    <% end %>
+    <div class="flex flex-row align-center w-full">
+      <div class="flex flex-row align-center w-8/12">
+        <p  class="text-sm pb-3"> <%= t :author %> </p>
+        <div class="font-semibold text-sm pl-3 pb-3 hover:text-gray-800"> <%= post.user_name %> </div>
       </div>
-      <div class=<%= show_all ? "text-sm pb-3" : "line-clamp-3" %> > <%= post.body %> </div>
     </div>
-  </article>
-<% end %>
+    <div class=<%= show_all ? "text-sm pb-3" : "line-clamp-3" %> > <%= post.body %> </div>
+    <% if render_tools %>
+      <div>
+        <%= link_to t("delete"), user_post_path(current_user, post), data: {turbo_method: :delete, turbo_confirm: t("are_you_sure")}, class: "text-primary hover:text-secondary" %>
+        <%= link_to t("edit"), edit_user_post_path(current_user, post), data: {turbo_method: :get}, class: "pl-10 text-primary hover:text-secondary" %>
+      </div>
+    <% end %>
+  </div>
+</article>

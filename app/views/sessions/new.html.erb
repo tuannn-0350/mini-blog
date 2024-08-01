@@ -6,11 +6,11 @@
       <%= form_for :session, url: login_path, class: "w-4/6" do |f| %>
         <%= render "shared/error_messages", object: f.object %>
         <div class="py-3">
-          <%= f.label t :email %>
+          <%= f.label :email, t(:email) %>
           <%= f.email_field :email, class: "field"  %>
         </div>
         <div  class="py-3">
-          <%= f.label t :password %>
+          <%= f.label :password, t(:password) %>
           <%= f.password_field :password, class: "field" %>
         </div >
 

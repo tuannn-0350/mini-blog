@@ -1,11 +1,13 @@
 <% provide :title,  t("my_posts") %>
 <section class="w-full md:w-2/3 mx-auto flex flex-col items-center px-3">
+  <%= render "shared/error_messages" %>
+  <%= link_to t("new_post"), new_post_path, class: "bg-primary hover:bg-secondary text-white font-bold py-2 px-4 mt-4 rounded" %>
   <% if @posts.empty? %>
     <p class="text-center text-gray-500 text-lg mt-8">
       <%= t("no_posts") %>
     </p>
   <% else %>
-    <%= render @posts, show_all: false %>
+    <%= render @posts, show_all: false, render_tools: true %>
     <%= @posts.count < Settings.pagy.items ? "" :  pagy_nav(@pagy)  %>
   <% end %>
 </section>
