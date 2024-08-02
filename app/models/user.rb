@@ -29,6 +29,19 @@ foreign_key: :followed_id, dependent: :destroy
     following.include? other_user
   end
 
+  def like? post
+    reacted_posts.include? post
+  end
+
+  def like post
+    reactions << Reaction.new(post:)
+  end
+
+  def unlike post
+    reaction = reactions.find_by id: post.id
+    reactions.delete reaction
+  end
+
   private
 
   def downcase_email

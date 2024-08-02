@@ -1,0 +1,6 @@
+<%= form_for current_user.reactions.build, remote: true do |f| %>
+  <%= hidden_field_tag :post_id, @post.id %>
+  <%= f.button nil, class: "w-12 h-12 hover:bg-blue-100 rounded round" do %>
+    <i class="far fa-heart text-rose-600 text-xl"></i>
+  <% end %>
+<% end %>
