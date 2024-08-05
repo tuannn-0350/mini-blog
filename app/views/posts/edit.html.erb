@@ -1,3 +1,6 @@
 <% provide :title,  t("new_post") %>
 
-<%= render "shared/post_form", method: :patch, url: user_post_path %>
+<div class="flex flex-col items-center w-full">
+  <%= render "shared/error_messages", object: @post %>
+  <%= render "shared/post_form", method: :patch, url: user_post_path %>
+</div>

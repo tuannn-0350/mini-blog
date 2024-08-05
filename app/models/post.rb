@@ -7,7 +7,14 @@ class Post < ApplicationRecord
 
   delegate :name, to: :user, prefix: true
 
+  validates :title, presence: true,
+length: {maximum: Settings.post.title_max_length}
+  validates :body, presence: true,
+length: {maximum: Settings.post.body_max_length}
+
   scope :published, ->{where status: true}
   scope :order_by_created_at, ->{order created_at: :desc}
-  scope :feed, ->(following_ids){where user_id: following_ids}
+  scope :feed, lambda {|following_ids|
+    where(user_id: following_ids).order_by_created_at
+  }
 end

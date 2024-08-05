@@ -35,10 +35,11 @@ class PostsController < ApplicationController
   def update
     if @post.update post_params
       flash[:success] = t "post_updated"
+      redirect_to user_posts_path(current_user)
     else
       flash[:danger] = t "post_update_failed"
+      render :edit, status: :unprocessable_entity
     end
-    redirect_to user_posts_path(current_user)
   end
 
   def destroy

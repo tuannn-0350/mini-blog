@@ -14,7 +14,7 @@ module SessionsHelper
   end
 
   def log_out
-    session.delete(:user_id)
+    session.delete :user_id
     @current_user = nil
   end
 
@@ -23,8 +23,8 @@ module SessionsHelper
   end
 
   def redirect_back_or default
-    redirect_to(session[:forwarding_url] || default)
-    session.delete(:forwarding_url)
+    redirect_to session[:forwarding_url] || default
+    session.delete :forwarding_url
   end
 
   def current_user? user
