@@ -45,3 +45,4 @@ vi:
   user_not_found: "Không tìm thấy người dùng"
   like: "Thích"
   unlike: "Bỏ thích"
+  unauthorized: "Không có quyền truy cập"

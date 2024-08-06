@@ -45,3 +45,4 @@ en:
   user_not_found: "User not found"
   like: "Like"
   unlike: "Unlike"
+  unauthorized: "You are not authorized to access this page"

@@ -1,2 +1,6 @@
 pagy:
   items: 5
+
+post:
+  title_max_length: 100
+  body_max_length: 1000

@@ -12,7 +12,7 @@ class SessionsController < ApplicationController
 
     if user&.authenticate params.dig(:session, :password)
       log_in user
-      redirect_to root_url
+      redirect_back_or root_url
     else
       flash.now[:danger] = t "invalid_email_password_combination"
       render :new, status: :unprocessable_entity
