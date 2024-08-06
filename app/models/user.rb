@@ -15,6 +15,20 @@ foreign_key: :followed_id, dependent: :destroy
   has_many :reactions, dependent: :destroy
   has_many :reacted_posts, through: :reactions, source: :post
 
+  validates :name, presence: true,
+                   length: {maximum: Settings.user.name_max_length,
+                            minimum: Settings.user.name_min_length}
+
+  validates :email, presence: true,
+                    length: {maximum: Settings.user.email_max_length,
+                             minimum: Settings.user.email_min_length},
+                    format: {with: Settings.user.email_regex},
+                    uniqueness: {case_sensitive: false}
+
+  validates :password, presence: true,
+                       length: {minimum: Settings.user.password_min_length,
+                                maximum: Settings.user.password_max_length}
+
   scope :order_by_name, ->{order name: :asc}
 
   def follow other_user

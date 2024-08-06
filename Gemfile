@@ -57,13 +57,14 @@ gem "sassc-rails"
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html
+  gem "factory_bot_rails"
   gem "pry-rails"
   gem "rails-controller-testing"
-  gem "factory_bot_rails"
   gem "rspec-rails"
   gem "rubocop", "~> 1.26", require: false
   gem "rubocop-checkstyle_formatter", require: false
   gem "rubocop-rails", "~> 2.14.0", require: false
+  gem "shoulda-matchers", "~> 5.0"
 end
 
 group :development do

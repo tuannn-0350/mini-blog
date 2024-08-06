@@ -4,3 +4,13 @@ pagy:
 post:
   title_max_length: 100
   body_max_length: 1000
+
+
+user:
+  name_max_length: 50
+  name_min_length: 3
+  email_max_length: 255
+  email_min_length: 6
+  password_max_length: 72
+  password_min_length: 6
+  email_regex: !ruby/regexp /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
