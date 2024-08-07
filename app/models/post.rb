@@ -17,4 +17,8 @@ length: {maximum: Settings.post.body_max_length}
   scope :feed, lambda {|following_ids|
     where(user_id: following_ids).order_by_created_at
   }
+
+  def update_status
+    update status: !status
+  end
 end
