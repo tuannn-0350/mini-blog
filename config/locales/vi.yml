@@ -46,3 +46,6 @@ vi:
   like: "Thích"
   unlike: "Bỏ thích"
   unauthorized: "Không có quyền truy cập"
+  logged_out: "Đăng xuất thành công"
+  logged_out_failed: "Đăng xuất thất bại"
+  require_login: "Hãy đăng nhập trước khi thực hiện"
