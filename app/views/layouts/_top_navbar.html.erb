@@ -6,6 +6,17 @@
           <li><a class="hover:text-gray-200 hover:underline px-4 " href="#"> <%= t "contact" %> </a></li>
       </ul>
     </nav>
+    <nav>
+      <div class="flex flex-row items-center right-1 text-sm text-white uppercase no-underline space-x-2">
+        <button class="w-10 flex flex-row items-center text-white border border-0.5 border-white rounded" >
+          <%= link_to "En", {locale: "en"}, class: "w-full h-full flex flex-row items-center justify-center p-1" %>
+        </button>
+
+        <button class="w-10 flex flex-row items-center text-white border border-0.5 border-white rounded" >
+          <%= link_to "Vi", {locale: "vi"}, class: "w-full h-full flex flex-row items-center justify-center p-1" %>
+        </button>
+      </div>
+    </nav>
     <% if logged_in? %>
       <nav>
         <ul class="flex items-center justify-between font-bold text-sm text-white uppercase no-underline">

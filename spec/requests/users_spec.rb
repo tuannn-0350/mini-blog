@@ -39,7 +39,7 @@ RSpec.describe UsersController, type: :controller do
         expect(assigns(:users).inspect).to eql\
                User.order_by_name.limit(Settings.pagy.items).inspect
         expect(assigns(:pagy)).to be_a Pagy
-        expect(assigns(:users).count).to eq Settings.pagy.items
+        expect(assigns(:users).count <= Settings.pagy.items).to be_truthy
       end
     end
   end

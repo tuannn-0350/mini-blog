@@ -49,3 +49,8 @@ vi:
   logged_out: "Đăng xuất thành công"
   logged_out_failed: "Đăng xuất thất bại"
   require_login: "Hãy đăng nhập trước khi thực hiện"
+  download: "Tải xuống"
+  import_failed: "Nhập thất bại"
+  import_success: "Nhập thành công"
+  import_file: "Xác nhận"
+  import_failed_at_row: "Nhập thất bại ở dòng %{row}"

@@ -1,6 +1,12 @@
 <% provide :title,  t("my_posts") %>
 <section class="w-full md:w-2/3 mx-auto flex flex-col items-center px-3">
   <%= render "shared/error_messages" %>
+
+  <%= form_tag import_posts_path, multipart: true, class: "my-4" do %>
+    <%= file_field_tag :file, accept: ".xlsx", class: "mb-4 outline-none border border-gray-300 rounded py-2 px-4" %>
+    <%= submit_tag t("import_file"), class: "bg-primary hover:bg-secondary text-white font-bold py-2 px-4 rounded" %>
+  <% end %>
+
   <%= link_to t("new_post"), new_post_path, class: "bg-primary hover:bg-secondary text-white font-bold py-2 px-4 mt-4 rounded" %>
   <% if @posts.empty? %>
     <p class="text-center text-gray-500 text-lg mt-8">
