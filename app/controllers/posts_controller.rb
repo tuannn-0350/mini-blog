@@ -57,6 +57,35 @@ class PostsController < ApplicationController
                          limit: Settings.pagy.items
   end
 
+  def export
+    @posts = Post.published.order_by_created_at
+    respond_to do |format|
+      format.html
+      format.xlsx do
+        response.headers["Content-Disposition"] =
+          "attachment; filename=posts.xlsx"
+      end
+    end
+  end
+
+  def import
+    if params[:file].blank?
+      flash[:danger] = t "import_failed"
+
+    else
+      success, row = Post.import params[:file], current_user
+      puts success, row
+      if success
+        flash[:success] =
+          t("import_success")
+      else
+        flash[:danger] =
+          t("import_failed_at_row", row: row)
+      end
+    end
+    redirect_to user_posts_path(current_user)
+  end
+
   private
 
   def post_params

@@ -20,6 +20,10 @@ Rails.application.routes.draw do
 
   resources :posts do
     patch "publish", on: :member, to: "posts#publish"
+    collection do
+      get :export
+      post :import
+    end
   end
 
   resources :relationships, only: %i(create destroy)
