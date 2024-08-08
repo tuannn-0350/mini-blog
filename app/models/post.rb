@@ -21,4 +21,23 @@ length: {maximum: Settings.post.body_max_length}
   def update_status
     update status: !status
   end
+
+  def self.import file, user
+    spreadsheet = open_spreadsheet file
+    header = %w(title body status)
+
+    (Settings.post.header_row + 1..spreadsheet.last_row).each do |i|
+      row = Hash[[header, spreadsheet.row(i)].transpose]
+      user.posts.build(row.to_h).save!
+    rescue StandardError
+      return false, i
+    end
+  end
+
+  def self.open_spreadsheet file
+    case File.extname(file.original_filename)
+    when ".xlsx" then Roo::Excelx.new(file.path)
+    else raise "Unknown file type: #{file.original_filename}"
+    end
+  end
 end

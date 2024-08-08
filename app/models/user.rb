@@ -27,7 +27,8 @@ foreign_key: :followed_id, dependent: :destroy
 
   validates :password, presence: true,
                        length: {minimum: Settings.user.password_min_length,
-                                maximum: Settings.user.password_max_length}
+                                maximum: Settings.user.password_max_length},
+                       format: {with: Settings.user.password_regex}
 
   scope :order_by_name, ->{order name: :asc}
 

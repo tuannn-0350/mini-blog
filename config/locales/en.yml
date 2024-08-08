@@ -46,3 +46,7 @@ en:
   like: "Like"
   unlike: "Unlike"
   unauthorized: "You are not authorized to access this page"
+  download: "Download"
+  import_failed: "Import failed"
+  import_success: "Import successfully"
+  import_file: "Import file"

@@ -1,0 +1,10 @@
+wb = xlsx_package.workbook
+wb.add_worksheet(name: "Items") do |sheet|
+  sheet.add_row ["ID", "Title", "Created by", "Created_at"]
+  wb.styles do |style|
+    data_cell = style.add_style(format_code: "yyyy-mm-dd")
+    @posts.each do |post|
+      sheet.add_row [post.id, post.title, post.user_name, post.created_at], style: [nil, nil, nil, nil, data_cell]
+    end
+  end
+end
