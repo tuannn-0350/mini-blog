@@ -56,7 +56,10 @@ gem "sassc-rails"
 # gem "image_processing", "~> 1.2"
 
 gem "active_model_serializers"
+gem "caxlsx"
+gem "caxlsx_rails"
 gem "rack-cors"
+gem "roo"
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html
@@ -68,6 +71,7 @@ group :development, :test do
   gem "rubocop-checkstyle_formatter", require: false
   gem "rubocop-rails", "~> 2.14.0", require: false
   gem "shoulda-matchers", "~> 5.0"
+  gem "simplecov", require: false
 end
 
 group :development do

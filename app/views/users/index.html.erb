@@ -1,6 +1,7 @@
 <% provide :title, t("users") %>
-<h1><%= t("users") %></h1>
-<ul class="users">
-  <%= render @users %>
-</ul>
-<%== pagy_nav(@pagy) %>
+<div class="flex flex-col justify-between items-center">
+  <ul class="users">
+    <%= render @users %>
+  </ul>
+  <%== pagy_nav(@pagy) %>
+</div>

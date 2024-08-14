@@ -67,4 +67,53 @@ RSpec.describe Post, type: :model do
       expect(feed).not_to include post
     end
   end
+
+  describe "update status" do
+    let(:post) { create :post }
+    let!(:status) { post.status }
+
+    it "update status" do
+      post.update_status
+      expect(post.status).to eq !status
+    end
+  end
+
+  describe "import" do
+    let(:user) { create :user }
+    let(:file) { fixture_file_upload(Rails.root.join("spec/fixtures/files/posts.xlsx")) }
+    let(:import) { described_class.import file, user }
+
+    it "ưhen file is valid" do
+      expect(import.first).to be_truthy
+      expect(import.last).to be_nil
+    end
+
+    context "when file is invalid" do
+      let(:file) { fixture_file_upload(Rails.root.join("spec/fixtures/files/posts_invalid.xlsx")) }
+
+      it "return false" do
+        expect(import.first).to be_falsey
+        expect(import.last).to be_truthy
+      end
+    end
+
+    context "when file column is invalid" do
+      let(:file) { fixture_file_upload(Rails.root.join("spec/fixtures/files/posts_invalid_column.xlsx")) }
+
+      it "return false" do
+        expect(import.first).to be_falsey
+        expect(import.last).to be_truthy
+      end
+    end
+
+
+    context "when file extension is invalid" do
+      let(:file) { fixture_file_upload(Rails.root.join("spec/fixtures/files/posts_invalid.txt")) }
+
+      it "raise error" do
+        expect { import }.to raise_error("Unknown file type: posts_invalid.txt")
+      end
+    end
+  end
+
 end

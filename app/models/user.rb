@@ -52,7 +52,7 @@ foreign_key: :followed_id, dependent: :destroy
   end
 
   def unlike post
-    reaction = reactions.find_by id: post.id
+    reaction = reactions.find_by post_id: post.id
     reactions.delete reaction
   end
 
