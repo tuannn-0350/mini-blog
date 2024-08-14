@@ -4,22 +4,34 @@
   <section class="bg-gray-50 dark:bg-gray-900 w-full h-full ">
     <div class="flex flex-col items-center justify-center px-6 py-8 mx-auto h-full w-3/6 lg:py-0">
 
-      <%= form_for :user, url: signup_path, class: "w-4/6" do |f| %>
-        <div class="py-3">
-          <%= f.label :name %>
+      <%= form_for @user, url: signup_path, html: { class: "w-4/6" } do |f| %>
+        <div class="py-3 w-full">
+          <%= f.label :name, t(:name) %>
           <%= f.text_field :name, class: "field"  %>
+          <span class="h-8 text-red-500 text-sm inline-flex items-center">
+            <%= f.object.errors[:name].any? ? content_tag(:p, show_errors(f.object, :name), class: "text-red-500 text-sm") : "" %>
+          </span>
         </div>
-        <div class="py-3">
-          <%= f.label :email %>
+        <div class="py-3 w-full">
+          <%= f.label :email, t(:email) %>
           <%= f.email_field :email, class: "field"  %>
+          <span class="h-8 text-red-500 text-sm inline-flex items-center">
+            <%= f.object.errors[:email].any? ? content_tag(:p, show_errors(f.object, :email), class: "text-red-500 text-sm") : "" %>
+          </span>
         </div>
-        <div class="py-3">
-          <%= f.label :password %>
+        <div class="py-3 w-full">
+          <%= f.label :password, t(:password) %>
           <%= f.password_field :password, class: "field"  %>
+          <span class="h-8 text-red-500 text-sm inline-flex items-center">
+            <%= f.object.errors[:password].any? ? content_tag(:p, show_errors(f.object, :password), class: "text-red-500 text-sm") : "" %>
+          </span>
         </div>
-        <div class="py-3">
-          <%= f.label :password_confirmation %>
+        <div class="py-3 w-full">
+          <%= f.label :password_confirmation, t(:password_confirmation) %>
           <%= f.password_field :password_confirmation, class: "field"  %>
+          <span class="h-8 text-red-500 text-sm inline-flex items-center">
+            <%= f.object.errors[:password_confirmation].any? ? content_tag(:p, show_errors(f.object, :password_confirmation), class: "text-red-500 text-sm") : "" %>
+          </span>
         </div>
         <%= render "shared/error_messages" %>
         <div class="py-3">

@@ -9,3 +9,11 @@
 .alert-danger{
   @apply bg-red-100 border border-red-400 text-red-700;
 }
+
+.error_explanation {
+  @apply min-h-8 text-red-500;
+}
+
+label .field_with_errors {
+  @apply underline;
+}

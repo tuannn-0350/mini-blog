@@ -3,8 +3,13 @@ class Api::V1::RelationshipsController < Api::V1::BaseController
   skip_before_action :verify_authenticity_token
 
   def create
-    current_user.follow @user unless current_user == @user
+    unless current_user.can_follow? @user
+      render json: {errors: t("cannot_follow_yourself")},
+             status: :unprocessable_entity
+      return
+    end
 
+    current_user.follow @user
     render json: {follower: user_serializer(current_user),
                   followed: user_serializer(@user),
                   message: t("follow")},
@@ -12,11 +17,15 @@ class Api::V1::RelationshipsController < Api::V1::BaseController
   end
 
   def destroy
-    current_user.unfollow @user if current_user.following? @user
-    render json: {follower: user_serializer(current_user),
-                  followed: user_serializer(@user),
-                  message: t("unfollow")},
-           status: :ok
+    if current_user.following? @user
+      current_user.unfollow @user
+      render json: {follower: user_serializer(current_user),
+                    followed: user_serializer(@user),
+                    message: t("unfollow")},
+             status: :ok
+    else
+      render json: {errors: t("not_followed")}, status: :unprocessable_entity
+    end
   end
 
   private
