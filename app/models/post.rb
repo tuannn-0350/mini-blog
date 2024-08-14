@@ -17,7 +17,14 @@ length: {maximum: Settings.post.body_max_length}
   scope :feed, lambda {|following_ids|
     where(user_id: following_ids).order_by_created_at
   }
-
+  scope :filter_by_title, lambda{|title|
+                            where "title LIKE ?", "%#{title}%" if title.present?
+                          }
+  scope :filter_by_author, lambda{|author|
+                             if author.present?
+                               joins(:user).where "name LIKE ?", "%#{author}%"
+                             end
+                           }
   def update_status
     update status: !status
   end
@@ -26,9 +33,12 @@ length: {maximum: Settings.post.body_max_length}
     spreadsheet = open_spreadsheet file
     header = %w(title body status)
     rows = []
+    now = Time.zone.now
 
     (Settings.post.header_row + 1..spreadsheet.last_row).each do |i|
-      row = Hash[[header, spreadsheet.row(i)].transpose]
+      row = Hash[[header, spreadsheet.row(i)].transpose].merge(
+        created_at: now, updated_at: now
+      )
       user.posts.build(row).valid? ? rows << row : (return false, i)
     rescue StandardError
       return false, i

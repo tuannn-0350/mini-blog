@@ -54,3 +54,4 @@ en:
   import_success: "Import successfully"
   import_file: "Import file"
   import_failed_at_row: "Fail at row %{row}"
+  search: "Search"

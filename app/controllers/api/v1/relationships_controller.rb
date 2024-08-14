@@ -3,7 +3,7 @@ class Api::V1::RelationshipsController < Api::V1::BaseController
   skip_before_action :verify_authenticity_token
 
   def create
-    current_user.follow @user
+    current_user.follow @user unless current_user == @user
 
     render json: {follower: user_serializer(current_user),
                   followed: user_serializer(@user),
@@ -12,7 +12,7 @@ class Api::V1::RelationshipsController < Api::V1::BaseController
   end
 
   def destroy
-    current_user.unfollow @user
+    current_user.unfollow @user if current_user.following? @user
     render json: {follower: user_serializer(current_user),
                   followed: user_serializer(@user),
                   message: t("unfollow")},
