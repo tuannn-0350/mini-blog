@@ -53,12 +53,17 @@ class PostsController < ApplicationController
   end
 
   def feed
-    @pagy, @posts = pagy Post.published.feed(current_user.following_ids),
+    @pagy, @posts = pagy Post.published.feed(current_user.following_ids)\
+                             .order_by_created_at\
+                             .filter_by_author(params[:user_name])\
+                             .filter_by_title(params[:title]),
                          limit: Settings.pagy.items
   end
 
   def export
-    @posts = Post.published.order_by_created_at
+    @posts = Post.published.order_by_created_at\
+                 .filter_by_author(params[:user_name])\
+                 .filter_by_title(params[:title])
     respond_to do |format|
       format.html
       format.xlsx do

@@ -54,3 +54,6 @@ vi:
   import_success: "Nhập thành công"
   import_file: "Xác nhận"
   import_failed_at_row: "Nhập thất bại ở dòng %{row}"
+  search: "Tìm kiếm"
+  search_by_user_name: "Tên người dùng"
+  search_by_title: "Tiêu đề"
