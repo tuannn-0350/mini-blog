@@ -78,12 +78,7 @@ class PostsController < ApplicationController
       flash[:danger] = t "import_failed"
       redirect_to user_posts_path(current_user)
     else
-      success, error_post, row = Post.import params[:file], current_user
-      if success
-        handle_import_success
-      else
-        handle_import_error row, error_post
-      end
+      PortImport.call params[:file], current_user
     end
   end
 
@@ -98,23 +93,6 @@ class PostsController < ApplicationController
     return if @post
 
     flash[:danger] = t "post_not_found"
-    redirect_to user_posts_path(current_user)
-  end
-
-  def handle_import_error row, error_post
-    if error_post.is_a? Post
-      flash[:danger] =
-        "#{t('import_failed_at_row',
-             row:)}:<br>#{show_all_errors(error_post).join('<br>')}"
-    else
-      flash[:danger] =
-        "#{t('import_failed_at_row', row:)}: #{t('wrong_format')}"
-    end
-    redirect_to user_posts_path(current_user)
-  end
-
-  def handle_import_success
-    flash[:success] = t "import_success"
     redirect_to user_posts_path(current_user)
   end
 end
