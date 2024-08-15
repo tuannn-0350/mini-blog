@@ -39,12 +39,15 @@ length: {maximum: Settings.post.body_max_length}
       row = Hash[[header, spreadsheet.row(i)].transpose].merge(
         created_at: now, updated_at: now
       )
-      user.posts.build(row).valid? ? rows << row : (return false, i)
+      post = user.posts.build row
+      return false, post, i unless post.valid?
+
+      rows << row
     rescue StandardError
-      return false, i
+      return false, nil, i
     end
     user.posts.insert_all rows
-    [true, nil]
+    [true, nil, nil]
   end
 
   def self.open_spreadsheet file

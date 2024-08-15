@@ -1,14 +1,14 @@
 require 'rails_helper'
 
 RSpec.describe RelationshipsController, type: :controller do
+  let(:user) { create :user }
+  let(:other_user) { create :user }
+
+  before do
+    log_in user
+  end
+
   describe "POST /create" do
-    let(:user) { create :user }
-    let(:other_user) { create :user }
-
-    before do
-      log_in user
-    end
-
     it "create a relationship" do
       expect do
         post :create, params: {followed_id: other_user.id}

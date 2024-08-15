@@ -57,3 +57,6 @@ vi:
   search: "Tìm kiếm"
   search_by_user_name: "Tên người dùng"
   search_by_title: "Tiêu đề"
+  name: "Tên"
+  cannot_follow_yourself: "Không thể theo dõi chính mình"
+  not_followed: "Không theo dõi"

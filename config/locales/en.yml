@@ -55,3 +55,8 @@ en:
   import_file: "Import file"
   import_failed_at_row: "Fail at row %{row}"
   search: "Search"
+  search_by_user_name: "User name"
+  search_by_title: "Title"
+  name: "Name"
+  cannot_follow_yourself: "You cannot follow yourself"
+  not_followed: "Not followed"

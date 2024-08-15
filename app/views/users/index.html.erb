@@ -1,14 +1,14 @@
 <% provide :title, t("users") %>
 <div class="flex flex-col justify-between items-center w-8/12 mx-auto">
-  <table class="table-auto w-full">
-    <thead>
+  <table class="table-auto w-full mb-4">
+    <thead class="bg-gray-200">
       <tr>
-        <th><%= t("name") %></th>
-        <th><%= t("email") %></th>
+        <th class="px-4 py-2"><%= t("name") %></th>
+        <th class="px-4 py-2"><%= t("email") %></th>
       </tr>
     </thead>
 
-    <tbody>
+    <tbody class="text-center">
       <%= render @users %>
     </tbody>
   </table>

@@ -43,6 +43,10 @@ foreign_key: :followed_id, dependent: :destroy
     following.include? other_user
   end
 
+  def can_follow? other_user
+    self != other_user
+  end
+
   def like? post
     reacted_posts.include? post
   end

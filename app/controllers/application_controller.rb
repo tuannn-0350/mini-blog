@@ -26,4 +26,12 @@ class ApplicationController < ActionController::Base
     flash[:danger] = t "record_not_found"
     redirect_to root_url
   end
+
+  def show_all_errors object
+    return unless object.errors.any?
+
+    object.errors.messages.map do |field_name, messages|
+      "#{t(field_name.to_s)} #{messages.join(', ')}"
+    end
+  end
 end

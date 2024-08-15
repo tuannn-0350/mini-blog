@@ -4,7 +4,11 @@ class Api::V1::StaticPagesController < Api::V1::BaseController
                              .filter_by_author(params[:user_name])\
                              .filter_by_title(params[:title]),
                          limit: Settings.pagy.items
-    render json: {data: {posts: @posts, each_serializer: PostSerializer}},
+    render json: {data:
+          {posts:
+          ActiveModel::Serializer::CollectionSerializer\
+            .new(@posts,
+                 serializer: PostSerializer)}},
            status: :ok
   end
 end
